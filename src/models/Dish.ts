@@ -1,10 +1,11 @@
 import { prop, getModelForClass, Ref } from '@typegoose/typegoose';
 import { Review } from './Review';
 
-enum CATEGORIES {
+export enum CATEGORIES {
   APPETIZER = 'appetizer',
   MAIN = 'main',
   DESSERT = 'dessert',
+  DRINK = 'drink'
 }
 
 // Eliminarlo despues, creo que lo mejor para referencia va a ser User -> Order o algo
@@ -25,8 +26,8 @@ class Dish {
   @prop({ type: String })
   image: string;
 
-  @prop({ type: () => [Review] })
-  reviews: Review[];
+  @prop({ type: () => [Number] })
+  reviews: number[];
 
   @prop({ required: true, enum: CATEGORIES })
   categories: CATEGORIES;
@@ -34,8 +35,6 @@ class Dish {
   @prop({ type: Number, required: true, min: 0, default: 0 })
   price: number;
 
-  @prop({ required: true, ref: () => Restaurant }) // Relacion 1 a 1
-  restaurant: Ref<Restaurant>;
 }
 
 export const UserModel = getModelForClass(Dish);
