@@ -1,4 +1,4 @@
-export * from './auth.schema';
+export * from './user.schema';
 export * from './dish.schema';
 export * from './order.schema';
-export * from './resto.schema';
+export * from './table.schema';

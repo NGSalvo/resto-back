@@ -13,11 +13,20 @@ const itemsSchema = z.object({
     .default(0),
   quantity: z.number().nonnegative('La cantidad no puede ser negativa'),
   dish: z.string().nonempty('Debe enviar el ID del plato'),
+  observation: z.string().optional(),
 });
 
 export const createOrderSchema = z.object({
-  item: z.array(itemsSchema).nonempty(),
-  totalPrice: z.number(),
-  table: z.number().nonnegative('No puede ser un numero de mesa negativo'),
-  state: z.enum([orderState.DELIVERED, orderState.INIT, orderState.PAID]),
+  body: z.object({
+    item: z.array(itemsSchema),
+    totalPrice: z.number(),
+    table: z.number().nonnegative('No puede ser un numero de mesa negativo'),
+    state: z.enum([orderState.DELIVERED, orderState.INIT, orderState.PAID]),
+  }),
+});
+
+export const updateOrderSchema = z.object({
+  body: z.object({
+    state: z.enum([orderState.DELIVERED, orderState.INIT, orderState.PAID]),
+  }),
 });
