@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CATEGORIES } from '../models/Dish';
+import { CATEGORIES } from '../models';
 
 const { APPETIZER, DESSERT, MAIN, DRINK } = CATEGORIES;
 
