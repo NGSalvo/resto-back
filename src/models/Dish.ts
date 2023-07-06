@@ -1,4 +1,5 @@
-import { prop, getModelForClass, Ref } from '@typegoose/typegoose';
+import { prop, getModelForClass } from '@typegoose/typegoose';
+import { modelOptions } from '@typegoose/typegoose';
 
 export enum CATEGORIES {
   APPETIZER = 'appetizer',
@@ -7,22 +8,20 @@ export enum CATEGORIES {
   DRINK = 'drink',
 }
 
-// Eliminarlo despues, creo que lo mejor para referencia va a ser User -> Order o algo
-class Restaurant {
-  @prop({ type: String, required: true })
-  name: string;
-
-  // owner: User definir User
-}
-
+@modelOptions({
+  schemaOptions: {
+    _id: true,
+    timestamps: true,
+  },
+})
 class Dish {
   @prop({ type: String, required: true, trim: true, unique: true }) // declaracion para typegoose (mongoose con typescript)
   title: string; // tipado comun de typescript
 
-  @prop({ type: String })
+  @prop({ required: true, type: String })
   description: string;
 
-  @prop({ type: String })
+  @prop({ required: true, type: String })
   image: string;
 
   @prop({ type: () => [Number] })
@@ -35,4 +34,4 @@ class Dish {
   price: number;
 }
 
-export const UserModel = getModelForClass(Dish);
+export const DishModel = getModelForClass(Dish);
