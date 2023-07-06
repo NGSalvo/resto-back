@@ -5,4 +5,4 @@ class Table {
   quantity: number;
 }
 
-const TableModel = getModelForClass(Table);
+export const TableModel = getModelForClass(Table);
