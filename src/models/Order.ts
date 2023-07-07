@@ -1,6 +1,6 @@
 import { prop, getModelForClass, Ref } from '@typegoose/typegoose';
 import { modelOptions } from '@typegoose/typegoose';
-import { DishModel } from './Dish';
+import { DishModel, Dish } from './Dish';
 
 export enum STATES {
   INIT = 'init',
@@ -15,8 +15,8 @@ export enum STATES {
   },
 })
 class Order {
-  @prop({ required: true, ref: () => DishModel as typeof DishModel })
-  dish: Ref<typeof DishModel>;
+  @prop({ required: true, ref: () => DishModel })
+  dish: Ref<Dish>;
 
   @prop({ required: true, type: Number })
   quantity: number;
