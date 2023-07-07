@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const createTableSchema = z.object({
   body: z.object({
-    number: z
+    quantity: z
       .number()
       .nonnegative('No puede haber un numero negativo de mesas'),
   }),
@@ -10,7 +10,7 @@ export const createTableSchema = z.object({
 
 export const updateTableSchema = z.object({
   body: z.object({
-    number: z
+    quantity: z
       .number()
       .nonnegative('No puede haber un numero negativo de mesas'),
   }),
