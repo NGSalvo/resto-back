@@ -20,9 +20,11 @@ export const createOrderSchema = z.object({
   body: z.object({
     item: z.array(itemsSchema),
     totalPrice: z.number(),
-    table: z.number().nonnegative('No puede ser un numero de mesa negativo'),
-    state: z.enum([orderState.DELIVERED, orderState.INIT, orderState.PAID]),
+    state: z.enum([orderState.DELIVERED, orderState.INIT, orderState.PAID]).default(orderState.INIT),
   }),
+  params:z.object({
+    table: z.number().nonnegative('No puede ser un numero de mesa negativo'),
+  })
 });
 
 export const updateOrderSchema = z.object({

@@ -4,10 +4,11 @@ import { AnyZodObject, ZodError } from 'zod';
 export const schemaValidation =
   (schema: AnyZodObject) =>
   (req: Request, res: Response, next: NextFunction) => {
+    
     try {
       schema.parse({
         body: req.body,
-        params: req.params,
+        // params: req.params, //por ahora estara comentado
         // query: req.query, //por ahora estara comentado
       });
       next();

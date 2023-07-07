@@ -12,11 +12,15 @@ export const createUserSchema = z.object({
       .nonempty('Debe ingresar un nombre')
       .max(50, 'Maximo 50 caracteres')
       .trim(),
-    lastname: z
+    lastName: z
       .string()
       .nonempty('Debe ingresar un apellido')
       .max(50, 'Maximo 50 caracteres')
       .trim(),
+    email: z
+      .string()
+      .email('Debe ser un email')
+      .nonempty('Debe enviar un email'),
     password: z
       .string()
       .min(6, 'La contraseña debe tener al menos 6 caracteres')
@@ -34,11 +38,16 @@ export const updateUserSchema = z.object({
       .max(50, 'Maximo 50 caracteres')
       .trim()
       .optional(),
-    lastname: z
+    lastName: z
       .string()
       .nonempty('Debe ingresar un apellido')
       .max(50, 'Maximo 50 caracteres')
       .trim()
+      .optional(),
+    email: z
+      .string()
+      .email('Debe ser un email')
+      .nonempty('Debe enviar un email')
       .optional(),
     password: z
       .string()
