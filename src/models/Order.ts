@@ -1,7 +1,6 @@
 import { prop, getModelForClass, Ref } from '@typegoose/typegoose';
 import { modelOptions } from '@typegoose/typegoose';
 import { DishModel, Dish } from './Dish';
-import { number } from 'zod';
 
 export enum STATES {
   INIT = 'init',
@@ -37,7 +36,7 @@ export class Order {
   @prop({ type: [OrderItem], required: true })
   items: OrderItem[];
 
-  @prop({ required: true, type: number })
+  @prop({ required: true, type: Number })
   totalPrice: number;
 
   @prop({ required: true, enum: STATES, default: STATES.INIT })
