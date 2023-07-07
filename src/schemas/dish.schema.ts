@@ -21,8 +21,7 @@ export const createDishSchema = z.object({
       .url('Debe ingresar una Url valida'),
     price: z
       .number({ required_error: 'El precio debe ser un numero entero' })
-      .min(0, 'Precio debe ser mayor a 0')
-      .default(0),
+      .min(0, 'Precio debe ser mayor a 0'),
     categories: z.enum([APPETIZER, DESSERT, MAIN, DRINK], {
       required_error:
         'La categoria solo puede ser: main, appetizer, dessert y drink',
