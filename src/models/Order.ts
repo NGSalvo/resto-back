@@ -2,6 +2,12 @@ import { prop, getModelForClass, Ref } from '@typegoose/typegoose';
 import { modelOptions } from '@typegoose/typegoose';
 import { DishModel } from './Dish';
 
+export enum STATES {
+  INIT = 'init',
+  PAID = 'paid',
+  DELIVERED = 'delivered'
+}
+
 @modelOptions({
   schemaOptions: {
     _id: true,
@@ -20,6 +26,9 @@ class Order {
 
   @prop({ required: true, type: Number })
   totalPrice: number;
+
+  @prop({ required: true, enum: STATES, default: null})
+  states: STATES
 }
 
 export const OrderModel = getModelForClass(Order);
