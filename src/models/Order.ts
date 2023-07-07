@@ -27,7 +27,7 @@ class Order {
   @prop({ required: true, type: Number })
   totalPrice: number;
 
-  @prop({ required: true, enum: STATES, default: null})
+  @prop({ required: true, enum: STATES, default: STATES.INIT})
   states: STATES
 }
 
