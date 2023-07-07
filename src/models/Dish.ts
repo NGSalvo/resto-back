@@ -14,7 +14,7 @@ export enum CATEGORIES {
     timestamps: true,
   },
 })
-class Dish {
+export class Dish {
   @prop({ type: String, required: true, trim: true, unique: true }) // declaracion para typegoose (mongoose con typescript)
   title: string; // tipado comun de typescript
 
