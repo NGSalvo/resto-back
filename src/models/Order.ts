@@ -1,20 +1,20 @@
 import { prop, getModelForClass, Ref } from '@typegoose/typegoose';
 import { modelOptions } from '@typegoose/typegoose';
 import { DishModel, Dish } from './Dish';
+import { number } from 'zod';
 
 export enum STATES {
   INIT = 'init',
   PAID = 'paid',
-  DELIVERED = 'delivered'
+  DELIVERED = 'delivered',
 }
 
 @modelOptions({
   schemaOptions: {
-    _id: true,
-    timestamps: true,
+    _id: false,
   },
 })
-class Order {
+class OrderItem {
   @prop({ required: true, ref: () => DishModel })
   dish: Ref<Dish>;
 
@@ -26,9 +26,22 @@ class Order {
 
   @prop({ required: true, type: Number })
   totalPrice: number;
+}
 
-  @prop({ required: true, enum: STATES, default: STATES.INIT})
-  states: STATES
+@modelOptions({
+  schemaOptions: {
+    timestamps: true,
+  },
+})
+export class Order {
+  @prop({ type: [OrderItem], required: true })
+  items: OrderItem[];
+
+  @prop({ required: true, type: number })
+  totalPrice: number;
+
+  @prop({ required: true, enum: STATES, default: STATES.INIT })
+  state: STATES;
 }
 
 export const OrderModel = getModelForClass(Order);
