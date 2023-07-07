@@ -12,7 +12,7 @@ export enum ROLEUSER {
     timestamps: true,
   },
 })
-class User {
+export class User {
   @prop({ required: true, type: String })
   name: string;
 
