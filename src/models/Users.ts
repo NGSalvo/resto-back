@@ -27,6 +27,9 @@ export class User {
 
   @prop({ required: true, enum: ROLEUSER })
   role: ROLEUSER;
+
+  @prop({ type: Boolean, default: true })
+  active: boolean;
 }
 
 export const UserModel = getModelForClass(User);
