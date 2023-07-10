@@ -8,7 +8,7 @@ export const schemaValidation =
     try {
       schema.parse({
         body: req.body,
-        params: req.params, //por ahora estara comentado
+        params: req.params, 
         // query: req.query, //por ahora estara comentado
       });
       next();
