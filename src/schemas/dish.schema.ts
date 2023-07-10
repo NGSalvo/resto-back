@@ -15,6 +15,7 @@ export const createDishSchema = z.object({
         required_error: 'La descripcion debe ser una cadena de caracteres',
       })
       .nonempty('Debe tener una descripción')
+      .max(300, 'Solo podes agregar 300 caracteres')
       .trim(),
     image: z
       .string({ required_error: 'El url debe ser una cadena de caracteres' })
@@ -26,6 +27,11 @@ export const createDishSchema = z.object({
       required_error:
         'La categoria solo puede ser: main, appetizer, dessert y drink',
     }),
+    active: z
+      .boolean({
+        invalid_type_error: 'Solo puede tener valores True o False',
+      })
+      .default(true),
   }),
 });
 
@@ -42,6 +48,7 @@ export const updateDishSchema = z.object({
         required_error: 'La descripcion debe ser una cadena de caracteres',
       })
       .nonempty('Debe tener una descripción')
+      .max(300, 'Solo podes agregar 300 caracteres')
       .trim()
       .optional(),
     image: z
@@ -59,6 +66,11 @@ export const updateDishSchema = z.object({
           'La categoria solo puede ser: main, appetizer, dessert y drink',
       })
       .optional(),
+    active: z
+      .boolean({
+        invalid_type_error: 'Solo puede tener valores True o False',
+      })
+      .default(true),
   }),
   params: z.object({
     id: z

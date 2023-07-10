@@ -4,18 +4,17 @@ import { AnyZodObject, ZodError } from 'zod';
 export const schemaValidation =
   (schema: AnyZodObject) =>
   (req: Request, res: Response, next: NextFunction) => {
-    console.log(req.body)
     try {
       schema.parse({
         body: req.body,
-        params: req.params, 
+        params: req.params,
         // query: req.query, //por ahora estara comentado
       });
       next();
     } catch (error) {
       if (error instanceof ZodError) {
         return res.status(400).json(
-          error.issues.map((issue) => ({
+          error.issues.map(issue => ({
             path: issue.path,
             message: issue.message,
           })),
