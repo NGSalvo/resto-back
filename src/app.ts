@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { router as DishRouter } from './routes/DishRoutes/index';
 import { router as UserRouter } from './routes/UsersRoutes/index';
+import { router as OrderRouter } from './routes/OrderRoutes/index';
 export const app = express();
 
 app.use(morgan('dev'));
@@ -10,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(DishRouter);
 app.use(UserRouter);
+app.use(OrderRouter);
 //EJEMPLO DE POSTEO A LA BASE DE DATOS
 
 // import { UserModel as User } from './models';
