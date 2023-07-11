@@ -32,6 +32,9 @@ export class Dish {
 
   @prop({ type: Number, required: true, min: 0, default: 0 })
   price: number;
+
+  @prop({type: Boolean, default: true})
+  active: boolean
 }
 
 export const DishModel = getModelForClass(Dish);
