@@ -41,6 +41,9 @@ export class Order {
 
   @prop({ required: true, enum: STATES, default: STATES.INIT })
   state: STATES;
+
+  @prop({ type: Boolean, default: true })
+  active: boolean;
 }
 
 export const OrderModel = getModelForClass(Order);
