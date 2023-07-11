@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { router as DishRouter } from './routes/DishRoutes/index';
 import { router as UserRouter } from './routes/UsersRoutes/index';
-import { router as OrderRouter } from './routes/OrderRoutes/index';
+import { router as OrderRouter } from './routes/OrderRoutes/index'
 export const app = express();
 
 app.use(morgan('dev'));
