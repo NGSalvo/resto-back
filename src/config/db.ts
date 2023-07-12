@@ -1,5 +1,4 @@
 import { connect } from 'mongoose';
-
 import { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST } from './config';
 // import { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST, DB_PORT } from './config';
 
