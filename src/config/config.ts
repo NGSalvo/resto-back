@@ -9,4 +9,4 @@ export const DB_USER = process.env.MONGOUSER || 'root';
 export const DB_PASSWORD = process.env.MONGOPASS || 'root';
 export const DB_NAME = process.env.MONGODB || 'resto';
 export const DB_PORT = process.env.MONGOPORT || 27017;
-export const DB_URL = process.env.MONGO_URL || 'localhost:27017';
+export const DB_URL = process.env.MONGOURL || 'localhost:27017';
