@@ -6,7 +6,7 @@ import { DB_URL } from './config';
 
 export const connectDB = async () => {
   const db = await connect(
-    DB_URL,
+    'mongodb+srv://' + DB_URL,
     // `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
     // `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}`,
   );
