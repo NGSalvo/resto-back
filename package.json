@@ -4,7 +4,7 @@
   "description": "PF",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm install && tsc",
     "dev": "ts-node-dev --respawn src/index.ts",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
