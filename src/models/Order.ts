@@ -5,6 +5,9 @@ import { Dish } from './Dish';
 export enum STATES {
   INIT = 'init',
   PAID = 'paid',
+  CANCELLED = 'cancelled',
+  INPROGRESS = 'in progress',
+  READY = 'ready',
   DELIVERED = 'delivered',
 }
 
@@ -27,9 +30,27 @@ class OrderItem {
   totalPrice: number;
 }
 
+class Payment {
+  @prop({ required: true, type: String })
+  id: string;
+
+  @prop({ required: true, type: String })
+  status: string;
+
+  @prop({ required: true, type: Number })
+  netAmount: number;
+
+  @prop({ required: true, type: Date })
+  dateCreated: Date;
+
+  @prop({ required: true, type: Date })
+  dateAproved: Date;
+}
+
 @modelOptions({
   schemaOptions: {
     timestamps: true,
+    id: true,
   },
 })
 export class Order {
@@ -44,6 +65,12 @@ export class Order {
 
   @prop({ type: Boolean, default: true })
   active: boolean;
+
+  @prop({ type: () => Payment })
+  payment: Payment;
+
+  @prop({ required: true, type: String })
+  table: string;
 }
 
 export const OrderModel = getModelForClass(Order);
