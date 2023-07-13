@@ -4,10 +4,11 @@
   "description": "PF",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm install && tsc",
     "dev": "ts-node-dev --respawn src/index.ts",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts .",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,12 @@
+import { config } from 'dotenv';
+
+config();
+
+export const PORT = process.env.PORT || 3000;
+
+export const DB_HOST = process.env.MONGOHOST || 'localhost';
+export const DB_USER = process.env.MONGOUSER || 'root';
+export const DB_PASSWORD = process.env.MONGOPASS || 'root';
+export const DB_NAME = process.env.MONGODB || 'resto';
+export const DB_PORT = process.env.MONGOPORT || 27017;
+export const DB_URL = process.env.MONGOURL || 'localhost:27017';
