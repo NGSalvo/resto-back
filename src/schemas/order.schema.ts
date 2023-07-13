@@ -3,6 +3,9 @@ import { z } from 'zod';
 const enum orderState {
   INIT = 'init',
   PAID = 'paid',
+  CANCELLED = 'cancelled',
+  INPROGRESS = 'in progress',
+  READY = 'ready',
   DELIVERED = 'delivered',
 }
 
@@ -35,10 +38,15 @@ export const createOrderSchema = z.object({
       required_error: 'El precio total debe ser un numero',
     }),
     state: z
-      .enum([orderState.DELIVERED, orderState.INIT, orderState.PAID])
+      .enum([
+        orderState.DELIVERED,
+        orderState.INIT,
+        orderState.PAID,
+        orderState.CANCELLED,
+        orderState.INPROGRESS,
+        orderState.READY,
+      ])
       .default(orderState.INIT),
-  }),
-  params: z.object({
     table: z
       .number({ required_error: 'Las mesas deben ser un numero' })
       .nonnegative('No puede ser un numero de mesa negativo'),
@@ -47,6 +55,13 @@ export const createOrderSchema = z.object({
 
 export const updateOrderSchema = z.object({
   body: z.object({
-    state: z.enum([orderState.DELIVERED, orderState.INIT, orderState.PAID]),
+    state: z.enum([
+      orderState.DELIVERED,
+      orderState.INIT,
+      orderState.PAID,
+      orderState.CANCELLED,
+      orderState.INPROGRESS,
+      orderState.READY,
+    ]),
   }),
 });
