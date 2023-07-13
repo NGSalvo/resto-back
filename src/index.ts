@@ -1,6 +1,8 @@
 import { app } from './app';
-import { connectDB } from './db';
+import { PORT } from './config';
+import { connectDB } from './config';
+import './config/config';
 
 connectDB();
-app.listen(3000);
-console.log('Server listening port 3000');
+app.listen(PORT);
+console.log(`Server listening port ${PORT}`);
