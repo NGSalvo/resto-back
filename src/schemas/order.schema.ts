@@ -55,13 +55,15 @@ export const createOrderSchema = z.object({
 
 export const updateOrderSchema = z.object({
   body: z.object({
-    state: z.enum([
-      orderState.DELIVERED,
-      orderState.INIT,
-      orderState.PAID,
-      orderState.CANCELLED,
-      orderState.INPROGRESS,
-      orderState.READY,
-    ]),
+    state: z
+      .enum([
+        orderState.DELIVERED,
+        orderState.INIT,
+        orderState.PAID,
+        orderState.CANCELLED,
+        orderState.INPROGRESS,
+        orderState.READY,
+      ])
+      .optional(),
   }),
 });
