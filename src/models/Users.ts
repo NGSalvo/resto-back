@@ -3,7 +3,7 @@ import { modelOptions } from '@typegoose/typegoose';
 
 export enum ROLEUSER {
   ADMIN = 'admin',
-  CLIENT = 'client',
+  EMPLOYEE = 'employee',
 }
 
 @modelOptions({
