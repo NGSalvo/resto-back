@@ -6,7 +6,7 @@ import { getDishID } from '../../controllers/DishControllers/getDishById';
 import { getDish } from '../../controllers/DishControllers/getAllDish';
 import { updateDishById } from '../../controllers/DishControllers/updateDishById';
 import { toggleDishById } from '../../controllers/DishControllers/toggleActiveDish';
-import { decodeToken } from '../../middlewares/firebase.Middleware';
+import { decodeToken } from '../../middlewares/firebase.middleware';
 
 export const router = Router();
 
