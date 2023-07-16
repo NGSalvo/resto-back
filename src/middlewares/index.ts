@@ -1,2 +1,2 @@
 export * from './schemaValidator.middleware';
-export * from './firebase.Middleware';
+export * from './firebase.middleware';

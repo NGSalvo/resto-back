@@ -24,7 +24,7 @@ export class Dish {
   @prop({ required: true, type: String })
   image: string;
 
-  @prop({ type: () => [Number] })
+  @prop({ type: () => [Number], default: [] })
   reviews: number[];
 
   @prop({ required: true, enum: CATEGORIES })
@@ -33,8 +33,8 @@ export class Dish {
   @prop({ type: Number, required: true, min: 0, default: 0 })
   price: number;
 
-  @prop({type: Boolean, default: true})
-  active: boolean
+  @prop({ type: Boolean, default: true })
+  active: boolean;
 }
 
 export const DishModel = getModelForClass(Dish);

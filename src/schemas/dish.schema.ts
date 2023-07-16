@@ -32,6 +32,7 @@ export const createDishSchema = z.object({
         invalid_type_error: 'Solo puede tener valores True o False',
       })
       .default(true),
+    reviews: z.array(z.number()).optional(),
   }),
 });
 
@@ -71,6 +72,7 @@ export const updateDishSchema = z.object({
         invalid_type_error: 'Solo puede tener valores True o False',
       })
       .default(true),
+    reviews: z.array(z.number()).optional(),
   }),
   params: z.object({
     id: z
