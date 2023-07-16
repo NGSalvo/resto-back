@@ -1,4 +1,6 @@
 import admin from '../config/firebase-config';
+import { CustomRequest } from '../customTypes';
+
 import { Request, Response, NextFunction } from 'express';
 
 export async function decodeToken(
@@ -13,8 +15,20 @@ export async function decodeToken(
         .auth()
         .verifyIdToken(token);
       if (decodeValue) {
-        console.log(decodeValue);
-        return next();
+        // Obtener el usuario desde Firestore según el UID del usuario decodificado
+        const userSnapshot = await admin
+          .firestore()
+          .collection('users')
+          .where('uid', '==', decodeValue.uid)
+          .get();
+        if (!userSnapshot.empty) {
+          // El usuario fue encontrado en Firestore, tomar el primer documento (debería haber solo uno)
+          const userData = userSnapshot.docs[0].data();
+
+          req.user = userData;
+          console.log(userData); // Puedes imprimir los datos del usuario para verificar sus detalles
+          return next();
+        }
       }
     }
     return res.status(401).json({ message: 'Unauthorized' });
