@@ -7,7 +7,7 @@ import { updateUserById } from '../../controllers/UserControllers/updateUsersByI
 import { getUsers } from '../../controllers/UserControllers/getAllUsers';
 import { getUserId } from '../../controllers/UserControllers/getUsersById';
 import { softDeleteUserById } from '../../controllers/UserControllers/putDeleteUsers';
-import { decodeToken } from '../../middlewares/firebase.Middleware';
+import { decodeToken } from '../../middlewares/firebase.middleware';
 
 router.post(
   '/users',

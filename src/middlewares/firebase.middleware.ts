@@ -17,8 +17,8 @@ export async function decodeToken(
         return next();
       }
     }
-    return res.send('Unauthorized');
+    return res.status(401).json({ message: 'Unauthorized' });
   } catch (error) {
-    return res.send('Internal Error');
+    return res.status(500).json({ message: 'Server Internal Error' });
   }
 }
