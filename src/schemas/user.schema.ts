@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export enum Roles {
   ADMIN = 'admin',
-  CLIENT = 'client',
+  EMPLOYEE = 'employee',
 }
 
 export const createUserSchema = z.object({
@@ -31,8 +31,8 @@ export const createUserSchema = z.object({
       .max(12, 'Maximo 12 caracteres')
       .trim(),
     role: z
-      .enum([Roles.ADMIN, Roles.CLIENT], {
-        required_error: 'El rol debe ser admin o client',
+      .enum([Roles.ADMIN, Roles.EMPLOYEE], {
+        required_error: 'El rol debe ser admin o employee',
       })
       .optional(),
   }),
@@ -68,8 +68,8 @@ export const updateUserSchema = z.object({
       .trim()
       .optional(),
     role: z
-      .enum([Roles.ADMIN, Roles.CLIENT], {
-        required_error: 'El rol debe ser admin o client',
+      .enum([Roles.ADMIN, Roles.EMPLOYEE], {
+        required_error: 'El rol debe ser admin o employee',
       })
       .optional(),
   }),
