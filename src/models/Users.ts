@@ -1,35 +1,38 @@
-import { prop, getModelForClass } from '@typegoose/typegoose';
-import { modelOptions } from '@typegoose/typegoose';
+// import { prop, getModelForClass } from '@typegoose/typegoose';
+// // import { modelOptions } from '@typegoose/typegoose';
 
-export enum ROLEUSER {
-  ADMIN = 'admin',
-  EMPLOYEE = 'employee',
-}
+// export enum ROLEUSER {
+//   ADMIN = 'admin',
+//   EMPLOYEE = 'employee',
+// }
 
-@modelOptions({
-  schemaOptions: {
-    _id: true,
-    timestamps: true,
-  },
-})
-export class User {
-  @prop({ required: true, type: String })
-  name: string;
+// // @modelOptions({
+// //   schemaOptions: {
+// //     _id: true,
+// //     timestamps: true,
+// //   },
+// // })
+// export class User {
+//   @prop({ required: true, type: String })
+//   name: string;
 
-  @prop({ required: true, type: String })
-  lastName: string;
+//   @prop({ required: true, type: String })
+//   lastName: string;
 
-  @prop({ required: true, unique: true, type: String })
-  email: string;
+//   @prop({ required: true, unique: true, type: String })
+//   email: string;
 
-  @prop({ required: true, type: String })
-  password: string;
+//   @prop({ required: true, type: String })
+//   password: string;
 
-  @prop({ required: true, enum: ROLEUSER })
-  role: ROLEUSER;
+//   @prop({ required: true, enum: ROLEUSER })
+//   role: ROLEUSER;
 
-  @prop({ type: Boolean, default: true })
-  active: boolean;
-}
+//   @prop({ type: Boolean, default: true })
+//   active: boolean;
 
-export const UserModel = getModelForClass(User);
+//   @prop({ type: String })
+//   uid?: string;
+// }
+
+// export const UserModel = getModelForClass(User);
