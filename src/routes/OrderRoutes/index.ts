@@ -9,33 +9,43 @@ import { getOrder } from '../../controllers/OrderControllers/getAllOrder';
 import { getOrderId } from '../../controllers/OrderControllers/getOrderById';
 import { updateOrders } from '../../controllers/OrderControllers/updateOrder';
 import { toggleOrderById } from '../../controllers/OrderControllers/toggleOrder';
-import { decodeToken } from '../../middlewares/firebase.middleware';
-import { requireAdmin } from '../../middlewares/permissions/adminPermission.middelware';
-import { requireEmployee } from '../../middlewares/permissions/employeePermission.middelware';
+// import { decodeToken } from '../../middlewares/firebase.middleware';
+// import { requireAdmin } from '../../middlewares/permissions/adminPermission.middelware';
+// import { requireEmployee } from '../../middlewares/permissions/employeePermission.middelware';
 
 export const router = Router();
 
 router.post(
   '/order',
-  decodeToken,
-  requireAdmin,
+  // decodeToken,
+  // requireAdmin,
   schemaValidation(createOrderSchema),
   postOrder,
 );
 
-router.get('/order', decodeToken, requireEmployee, getOrder);
-router.get('/order/:id', decodeToken, requireEmployee, getOrderId);
+router.get(
+  '/order',
+  //  decodeToken,
+  //  requireEmployee,
+  getOrder,
+);
+router.get(
+  '/order/:id',
+  // decodeToken,
+  // requireEmployee,
+  getOrderId,
+);
 router.put(
   '/order/:id',
-  decodeToken,
-  requireEmployee,
+  // decodeToken,
+  // requireEmployee,
   schemaValidation(updateOrderSchema),
   updateOrders,
 );
 router.put(
   '/order/delete/:id',
-  decodeToken,
-  requireAdmin,
+  // decodeToken,
+  // requireAdmin,
   schemaValidation(updateOrderSchema),
   toggleOrderById,
 );
