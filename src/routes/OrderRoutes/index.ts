@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { schemaValidation } from '../../middlewares/schemaValidator.middleware';
 import {
-  createOrderSchema,
+  // createOrderSchema,
   updateOrderSchema,
 } from '../../schemas/order.schema';
 import { postOrder } from '../../controllers/OrderControllers/postOrder';
@@ -19,7 +19,7 @@ router.post(
   '/order',
   // decodeToken,
   // requireAdmin,
-  schemaValidation(createOrderSchema),
+  // schemaValidation(createOrderSchema),
   postOrder,
 );
 

@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { schemaValidation } from '../../middlewares/schemaValidator.middleware';
+// import { schemaValidation } from '../../middlewares/schemaValidator.middleware';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createDishSchema, updateDishSchema } from '../../schemas/dish.schema';
 import { postDish } from '../../controllers/DishControllers/postDish';
 import { getDishID } from '../../controllers/DishControllers/getDishById';
@@ -16,7 +17,7 @@ router.post(
   '/dish',
   // decodeToken,
   // requireAdmin,
-  schemaValidation(createDishSchema),
+  // schemaValidation(createDishSchema),
   postDish,
 );
 
@@ -26,13 +27,13 @@ router.put(
   '/dish/:id',
   // decodeToken,
   // requireEmployee,
-  schemaValidation(updateDishSchema),
+  // schemaValidation(updateDishSchema),
   updateDishById,
 );
 router.put(
   '/dish/toggle/:id',
   // decodeToken,
   // requireAdmin,
-  schemaValidation(updateDishSchema),
+  // schemaValidation(updateDishSchema),
   toggleDishById,
 );

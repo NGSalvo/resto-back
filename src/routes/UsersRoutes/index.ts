@@ -1,6 +1,7 @@
 import { Router } from 'express';
 export const router = Router();
 import { schemaValidation } from '../../middlewares/schemaValidator.middleware';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createUserSchema, updateUserSchema } from '../../schemas/user.schema';
 import { postUser } from '../../controllers/UserControllers/postUsers';
 import { updateUserById } from '../../controllers/UserControllers/updateUsersById';
@@ -25,7 +26,7 @@ router.put(
   '/users/:id',
   decodeToken,
   requireAdmin,
-  schemaValidation(updateUserSchema),
+  // schemaValidation(updateUserSchema),
   updateUserById,
 );
 router.put('/users/delete/:id', decodeToken, requireAdmin, softDeleteUserById);
