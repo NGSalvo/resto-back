@@ -71,6 +71,9 @@ export class Order {
 
   @prop({ required: true, type: String })
   table: string;
+
+  @prop({ type: Boolean, default: false })
+  mailed: boolean;
 }
 
 export const OrderModel = getModelForClass(Order);
