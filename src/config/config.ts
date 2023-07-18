@@ -25,3 +25,7 @@ export const FB_TOKEN_URI = process.env.FB_TOKEN_URI || '';
 export const FB_AUTH_PROVIDER = process.env.FB_AUTH_PROVIDER || '';
 export const FB_CLIENT = process.env.FB_CLIENT || '';
 export const FB_UNIVERSE_DOMAIN = process.env.FB_UNIVERSE_DOMAIN || '';
+
+
+//NodeMailer
+export const APP_GMAIL_PASS = process.env.MAILER_GMAIL_KEY ||'Invalid Password';

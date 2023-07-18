@@ -6,6 +6,9 @@ import { updateOrder } from '../../services/OrderServices/updateOrder';
 
 import { findPayment } from '../../services/PaymentServices/findPayment';
 import { cancelPayment } from '../../services/PaymentServices/cancelPayment';
+import { MailSenderApproved } from '../../services/MailerServices/mailSenderApproved';
+import { MailSenderCancelled } from '../../services/MailerServices/mailSenderCancelled';
+import { getOrderById } from '../../services/OrderServices/getOrderById';
 
 export const recieveWebhook = async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -14,7 +17,7 @@ export const recieveWebhook = async (req: Request, res: Response) => {
   try {
     if (payment.type === 'payment') {
       const data = await findPayment(Number(payment['data.id']));
-
+      const order = await getOrderById(id);
       if (data.body.status === 'approved') {
         await updateOrder(id, {
           state: STATES.PAID,
@@ -26,11 +29,25 @@ export const recieveWebhook = async (req: Request, res: Response) => {
             dateAproved: data.body['date_approved'],
           },
         });
-
+        if (order?.mailed === false) {
+          MailSenderApproved(id, data.body['payer']['email']);
+          await updateOrder(id, { mailed: true });
+        }
         return res.status(204).send('Pago Realizado con exito');
+      } else if (data.body.status === 'rejected') {
+        await updateOrder(id, {
+          active: false,
+          state: STATES.CANCELLED,
+        });
+        if (order?.mailed === false) {
+          MailSenderCancelled(id, data.body['payer']['email']);
+          await updateOrder(id, { mailed: true });
+        }
+
+        return res.status(204).send('El pedido fue eliminado');
       } else {
         const datos = await cancelPayment(Number(payment['data.id']));
-
+        
         await updateOrder(id, {
           active: false,
           state: STATES.CANCELLED,
@@ -42,6 +59,10 @@ export const recieveWebhook = async (req: Request, res: Response) => {
             dateAproved: datos.body['date_approved'],
           },
         });
+        if (order?.mailed === false) {
+          MailSenderCancelled(id, data.body['payer']['email']);
+          await updateOrder(id, { mailed: true });
+        }
 
         return res.status(204).send('El pedido fue eliminado');
       }
