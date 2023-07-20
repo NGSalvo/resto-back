@@ -3,6 +3,7 @@ import { getUserRole } from '../../services/UsersServices/getUserRole';
 
 export const getRole = async (req: Request, res: Response) => {
   const { email } = req.user;
+
   try {
     const role = await getUserRole(email);
     res.send(role);
