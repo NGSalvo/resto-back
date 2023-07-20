@@ -10,7 +10,6 @@ export async function decodeToken(
   next: NextFunction,
 ) {
   const token = req.headers.authorization?.split(' ')[1];
-
   try {
     if (token) {
       const decodeValue: admin.auth.DecodedIdToken = await admin
@@ -30,6 +29,7 @@ export async function decodeToken(
           // El usuario fue encontrado en Firestore, tomar el primer documento (debería haber solo uno)
           const userData = userSnapshot.docs[0].data();
           req.user = userData;
+          req.user.id = decodeValue.uid;
 
           // console.log(userData); // Puedes imprimir los datos del usuario para verificar sus detalles
           return next();
@@ -38,6 +38,7 @@ export async function decodeToken(
     }
     return res.status(401).json({ message: 'Unauthorized' });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: 'Server Internal Error' });
   }
 }

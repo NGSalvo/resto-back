@@ -1,4 +1,5 @@
 import admin from '../../config/firebase-config';
+import '../../customTypes';
 
 export async function getUserRole(userEmail: string) {
   const userSnapshot = await admin

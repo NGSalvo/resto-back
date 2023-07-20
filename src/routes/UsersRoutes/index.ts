@@ -21,8 +21,8 @@ router.post(
 );
 
 router.get('/users', decodeToken, requireAdmin, getUsers);
-router.get('/users/role', decodeToken, getRole);
 router.get('/users/:id', decodeToken, requireAdmin, getUserId);
+router.get('/users/:id/role', decodeToken, getRole);
 
 router.put(
   '/users/:id',
