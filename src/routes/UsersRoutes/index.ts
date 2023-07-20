@@ -10,6 +10,7 @@ import { getUserId } from '../../controllers/UserControllers/getUsersById';
 import { softDeleteUserById } from '../../controllers/UserControllers/putDeleteUsers';
 import { decodeToken } from '../../middlewares/firebase.middleware';
 import { requireAdmin } from '../../middlewares/permissions/adminPermission.middelware';
+import { getRole } from '../../controllers/UserControllers/getUserRole';
 
 router.post(
   '/users',
@@ -20,6 +21,7 @@ router.post(
 );
 
 router.get('/users', decodeToken, requireAdmin, getUsers);
+router.get('/users/role', decodeToken, getRole);
 router.get('/users/:id', decodeToken, requireAdmin, getUserId);
 
 router.put(

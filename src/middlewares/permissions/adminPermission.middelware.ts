@@ -41,12 +41,10 @@ export async function requireAdmin(
   res: Response,
   next: NextFunction,
 ) {
-  console.log(req.user);
   const userEmail = req.user?.email;
-  console.log(userEmail);
 
   if (!userEmail) {
-    return res.status(403).send('Acceso denegado'); // Si no hay usuario, no se permite el acceso
+    return res.status(403).json({ message: 'Acceso denegado' }); // Si no hay usuario, no se permite el acceso
   }
 
   try {
@@ -59,13 +57,15 @@ export async function requireAdmin(
       .get();
     console.log(userDoc.docs[0].data());
     if (userDoc.empty || userDoc.docs[0].data()?.role !== 'admin') {
-      return res.status(403).send('No Autorizado'); // Si no es admin, no se permite el acceso
+      return res.status(403).json({ message: 'No Autorizado' }); // Si no es admin, no se permite el acceso
     }
 
     // Si es admin, permitir el acceso a todas las rutas protegidas
     return next();
   } catch (error) {
     console.error(error);
-    return res.status(500).send('Error al verificar los permisos del usuario');
+    return res
+      .status(500)
+      .json({ message: 'Error al verificar los permisos del usuario' });
   }
 }

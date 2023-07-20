@@ -9,7 +9,7 @@ export async function requireEmployee(
   const userEmail = req.user?.email; // Obtener el email del usuario actual desde Firebase
 
   if (!userEmail) {
-    return res.status(403).send('Acceso denegado'); // Si no hay usuario, no se permite el acceso
+    return res.status(403).json({ message: 'Acceso denegado' }); // Si no hay usuario, no se permite el acceso
   }
 
   try {
@@ -29,10 +29,12 @@ export async function requireEmployee(
       return next();
     }
 
-    return res.status(403).send('No Autorizado'); // Si no es admin o employee, no se permite el acceso
+    return res.status(403).json({ message: 'No Autorizado' }); // Si no es admin o employee, no se permite el acceso
     // Si es admin o employee, permitir el acceso a todas las rutas protegidas
   } catch (error) {
     console.error(error);
-    return res.status(500).send('Error al verificar los permisos del usuario');
+    return res
+      .status(500)
+      .json({ message: 'Error al verificar los permisos del usuario' });
   }
 }
