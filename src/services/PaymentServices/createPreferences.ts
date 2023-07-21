@@ -10,7 +10,6 @@ export async function createPreference(
   const result = await mercadopago.preferences.create({
     items: items,
     notification_url:
-      // 'https://13a9-138-117-19-170.ngrok-free.app/webhook/' + id,
       'https://resto-back-production-2867.up.railway.app/webhook/' + id,
     back_urls: {
       success: `${URL}?orderId=${id}&paymentStatus=approved`,

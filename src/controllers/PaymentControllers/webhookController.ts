@@ -47,7 +47,7 @@ export const recieveWebhook = async (req: Request, res: Response) => {
         return res.status(204).send('El pedido fue eliminado');
       } else {
         const datos = await cancelPayment(Number(payment['data.id']));
-        
+
         await updateOrder(id, {
           active: false,
           state: STATES.CANCELLED,
