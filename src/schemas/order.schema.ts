@@ -47,9 +47,7 @@ export const createOrderSchema = z.object({
         orderState.READY,
       ])
       .default(orderState.INIT),
-    table: z
-      .number({ required_error: 'Las mesas deben ser un numero' })
-      .nonnegative('No puede ser un numero de mesa negativo'),
+    table: z.string({ required_error: 'Debe indicar un numero de mesas' }),
   }),
 });
 

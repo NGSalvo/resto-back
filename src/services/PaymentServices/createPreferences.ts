@@ -1,8 +1,8 @@
 import mercadopago from 'mercadopago';
 import { PreferenceItem } from 'mercadopago/models/preferences/create-payload.model';
 
-// const URL ='https://www.google.com'
-const URL ='https://resto-front-testing.vercel.app/rating'
+const URL = 'https://resto-front-testing.vercel.app/rating';
+
 export async function createPreference(
   items: PreferenceItem[] | undefined,
   id: number,
@@ -10,12 +10,11 @@ export async function createPreference(
   const result = await mercadopago.preferences.create({
     items: items,
     notification_url:
-      // 'https://13a9-138-117-19-170.ngrok-free.app/webhook/' + id,
-    'https://resto-back-production-2867.up.railway.app/webhook/' + id,
+      'https://resto-back-production-2867.up.railway.app/webhook/' + id,
     back_urls: {
       success: `${URL}?orderId=${id}&paymentStatus=approved`,
       failure: `${URL}?orderId=${id}&paymentStatus=cancelled`,
-      pending: `${URL}?orderId=${id}&paymentStatus=cancelled`
+      pending: `${URL}?orderId=${id}&paymentStatus=cancelled`,
     },
     auto_return: 'all',
     payment_methods: {

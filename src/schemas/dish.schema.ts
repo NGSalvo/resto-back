@@ -17,9 +17,9 @@ export const createDishSchema = z.object({
       .nonempty('Debe tener una descripción')
       .max(300, 'Solo podes agregar 300 caracteres')
       .trim(),
-    image: z
-      .string({ required_error: 'El url debe ser una cadena de caracteres' })
-      .url('Debe ingresar una Url valida'),
+    image: z.string({
+      required_error: 'El url debe ser una cadena de caracteres',
+    }),
     price: z
       .number({ required_error: 'El precio debe ser un numero entero' })
       .min(0, 'Precio debe ser mayor a 0'),
@@ -54,7 +54,6 @@ export const updateDishSchema = z.object({
       .optional(),
     image: z
       .string({ required_error: 'El url debe ser una cadena de caracteres' })
-      .url('Debe ingresar una Url valida')
       .optional(),
     price: z
       .number({ required_error: 'El precio debe ser un numero entero' })
@@ -73,12 +72,5 @@ export const updateDishSchema = z.object({
       })
       .default(true),
     reviews: z.array(z.number()).optional(),
-  }),
-  params: z.object({
-    id: z
-      .string({ required_error: 'El Id debe ser una cadena de caracteres' })
-      .nonempty('El id debe ser especificado')
-      .min(24, 'Id invalido')
-      .max(24, 'Id invalido'),
   }),
 });
