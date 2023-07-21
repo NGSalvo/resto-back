@@ -1,7 +1,8 @@
 import mercadopago from 'mercadopago';
 import { PreferenceItem } from 'mercadopago/models/preferences/create-payload.model';
 
-const URL ='https://www.google.com'
+// const URL ='https://www.google.com'
+const URL ='https://resto-front-testing.vercel.app/'
 export async function createPreference(
   items: PreferenceItem[] | undefined,
   id: number,
