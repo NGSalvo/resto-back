@@ -6,30 +6,35 @@ export async function requireEmployee(
   res: Response,
   next: NextFunction,
 ) {
-  const userId = req.user?.uid; // Obtener el ID del usuario actual desde Firebase
+  const userEmail = req.user?.email; // Obtener el email del usuario actual desde Firebase
 
-  if (!userId) {
-    return res.status(403).send('Acceso denegado'); // Si no hay usuario, no se permite el acceso
+  if (!userEmail) {
+    return res.status(403).json({ message: 'Acceso denegado' }); // Si no hay usuario, no se permite el acceso
   }
 
   try {
-    // Obtener el usuario desde Firestore usando el ID del usuario actual
+    // Obtener el usuario desde Firestore usando el email del usuario actual
     const userDoc = await admin
       .firestore()
       .collection('users')
-      .doc(userId)
+      .where('email', '==', userEmail)
       .get();
+    console.log(userDoc.docs[0].data());
+
     if (
-      !userDoc.exists ||
-      (userDoc.data()?.role !== 'admin' && userDoc.data()?.role !== 'employee')
+      !userDoc.empty &&
+      (userDoc.docs[0].data()?.role == 'admin' ||
+        userDoc.docs[0].data()?.role == 'employee')
     ) {
-      return res.status(403).send('No Autorizado'); // Si no es admin o employee, no se permite el acceso
+      return next();
     }
 
+    return res.status(403).json({ message: 'No Autorizado' }); // Si no es admin o employee, no se permite el acceso
     // Si es admin o employee, permitir el acceso a todas las rutas protegidas
-    return next();
   } catch (error) {
     console.error(error);
-    return res.status(500).send('Error al verificar los permisos del usuario');
+    return res
+      .status(500)
+      .json({ message: 'Error al verificar los permisos del usuario' });
   }
 }

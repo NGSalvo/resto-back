@@ -1,12 +1,9 @@
 import { Request } from 'express';
 
-export interface CustomRequest extends Request {
-  user?: any;
-}
-
-// Extender el tipo "Request" de Express para agregar la propiedad "user"
-declare module 'express-serve-static-core' {
-  interface Request {
-    user?: any;
+declare global {
+  namespace Express {
+    interface Request {
+      user?: any; // Puedes ajustar el tipo de 'user' según tus necesidades
+    }
   }
 }
