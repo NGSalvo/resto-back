@@ -1,5 +1,5 @@
 import { Router } from 'express';
-export const router = Router();
+export const userRouter = Router();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createUserSchema, updateUserSchema } from '../../schemas';
 
@@ -13,24 +13,24 @@ import {
 } from '../../controllers';
 import { decodeToken, requireAdmin, schemaValidation } from '../../middlewares';
 
-router.post(
-  '/users',
+userRouter.post(
+  '/',
   decodeToken,
   requireAdmin,
   schemaValidation(createUserSchema),
   postUser,
 );
 
-router.get('/users', decodeToken, requireAdmin, getUsers);
-router.get('/users/role', decodeToken, getRole);
-router.get('/users/:id', decodeToken, requireAdmin, getUserId);
-router.get('/users/:id/role', decodeToken, getRole);
+userRouter.get('/', decodeToken, requireAdmin, getUsers);
+userRouter.get('/role', decodeToken, getRole);
+userRouter.get('/:id', decodeToken, requireAdmin, getUserId);
+userRouter.get('/:id/role', decodeToken, getRole);
 
-router.put(
-  '/users/:id',
+userRouter.put(
+  '/:id',
   decodeToken,
   requireAdmin,
   // schemaValidation(updateUserSchema),
   updateUserById,
 );
-router.put('/users/delete/:id', decodeToken, requireAdmin, softDeleteUserById);
+userRouter.put('/delete/:id', decodeToken, requireAdmin, softDeleteUserById);

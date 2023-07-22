@@ -18,37 +18,37 @@ import {
   schemaValidation,
 } from '../../middlewares';
 
-export const router = Router();
+export const orderRouter = Router();
 
-router.post(
-  '/order',
+orderRouter.post(
+  '/',
   // decodeToken,
   // requireAdmin,
   // schemaValidation(createOrderSchema),
   postOrder,
 );
 
-router.get(
-  '/order',
+orderRouter.get(
+  '/',
   //  decodeToken,
   //  requireEmployee,
   getOrder,
 );
-router.get(
-  '/order/:id',
+orderRouter.get(
+  '/:id',
   // decodeToken,
   // requireEmployee,
   getOrderId,
 );
-router.put(
-  '/order/:id',
+orderRouter.put(
+  '/:id',
   // decodeToken,
   // requireEmployee,
   schemaValidation(updateOrderSchema),
   updateOrders,
 );
-router.put(
-  '/order/delete/:id',
+orderRouter.put(
+  '/delete/:id',
   // decodeToken,
   // requireAdmin,
   schemaValidation(updateOrderSchema),

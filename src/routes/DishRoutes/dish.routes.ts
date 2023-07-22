@@ -16,27 +16,27 @@ import {
 //   schemaValidation,
 // } from '../../middlewares';
 
-export const router = Router();
+export const dishRouter = Router();
 
-router.post(
-  '/dish',
+dishRouter.post(
+  '/',
   // decodeToken,
   // requireAdmin,
   // schemaValidation(createDishSchema),
   postDish,
 );
 
-router.get('/dish', getDish);
-router.get('/dish/:id', getDishID);
-router.put(
-  '/dish/:id',
+dishRouter.get('/', getDish);
+dishRouter.get('/:id', getDishID);
+dishRouter.put(
+  '/:id',
   // decodeToken,
   // requireEmployee,
   // schemaValidation(updateDishSchema),
   updateDishById,
 );
-router.put(
-  '/dish/toggle/:id',
+dishRouter.put(
+  '/toggle/:id',
   // decodeToken,
   // requireAdmin,
   // schemaValidation(updateDishSchema),
