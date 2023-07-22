@@ -5,11 +5,7 @@ import { MP_API_KEY } from '../../config';
 import { Response, Request } from 'express';
 
 import { Dish } from '../../models';
-
-import { createOrder } from '../../services/OrderServices/createOrder';
-import { getOrderById } from '../../services/OrderServices/getOrderById';
-
-import { createPreference } from '../../services/PaymentServices/createPreferences';
+import { createOrder, getOrderById, createPreference } from '../../services';
 
 export const createMPOrder = async (req: Request, res: Response) => {
   mercadopago.configure({

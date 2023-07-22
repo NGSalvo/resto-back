@@ -1,17 +1,22 @@
 import { Router } from 'express';
-import { schemaValidation } from '../../middlewares/schemaValidator.middleware';
+
 import {
   // createOrderSchema,
   updateOrderSchema,
-} from '../../schemas/order.schema';
-import { postOrder } from '../../controllers/OrderControllers/postOrder';
-import { getOrder } from '../../controllers/OrderControllers/getAllOrder';
-import { getOrderId } from '../../controllers/OrderControllers/getOrderById';
-import { updateOrders } from '../../controllers/OrderControllers/updateOrder';
-import { toggleOrderById } from '../../controllers/OrderControllers/toggleOrder';
-// import { decodeToken } from '../../middlewares/firebase.middleware';
-// import { requireAdmin } from '../../middlewares/permissions/adminPermission.middelware';
-// import { requireEmployee } from '../../middlewares/permissions/employeePermission.middelware';
+} from '../../schemas';
+import {
+  postOrder,
+  getOrder,
+  getOrderId,
+  updateOrders,
+  toggleOrderById,
+} from '../../controllers';
+import {
+  // decodeToken,
+  // requireAdmin,
+  // requireEmployee,
+  schemaValidation,
+} from '../../middlewares';
 
 export const router = Router();
 

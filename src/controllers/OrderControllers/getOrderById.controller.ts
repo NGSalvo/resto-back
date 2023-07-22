@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { getOrderById } from '../../services/OrderServices/getOrderById';
+import { getOrderById } from '../../services';
 
 export const getOrderId = async (req: Request, res: Response) => {
   const { id } = req.params;

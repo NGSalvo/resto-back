@@ -1,15 +1,20 @@
 import { Router } from 'express';
 // import { schemaValidation } from '../../middlewares/schemaValidator.middleware';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { createDishSchema, updateDishSchema } from '../../schemas/dish.schema';
-import { postDish } from '../../controllers/DishControllers/postDish';
-import { getDishID } from '../../controllers/DishControllers/getDishById';
-import { getDish } from '../../controllers/DishControllers/getAllDish';
-import { updateDishById } from '../../controllers/DishControllers/updateDishById';
-import { toggleDishById } from '../../controllers/DishControllers/toggleActiveDish';
-// import { decodeToken } from '../../middlewares/firebase.middleware';
-// import { requireAdmin } from '../../middlewares/permissions/adminPermission.middelware';
-// import { requireEmployee } from '../../middlewares/permissions/employeePermission.middelware';
+import { createDishSchema, updateDishSchema } from '../../schemas';
+import {
+  postDish,
+  getDish,
+  getDishID,
+  updateDishById,
+  toggleDishById,
+} from '../../controllers';
+// import {
+//   decodeToken,
+//   requireAdmin,
+//   requireEmployee,
+//   schemaValidation,
+// } from '../../middlewares';
 
 export const router = Router();
 

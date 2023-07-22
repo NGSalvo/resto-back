@@ -1,4 +1,4 @@
-import { transporter } from '../../config/mailer';
+import { transporter } from '../../config';
 // import { getOrderById } from "../OrderServices/getOrderById";
 
 export async function MailSenderCancelled(orderId: string, payerEmail: string) {

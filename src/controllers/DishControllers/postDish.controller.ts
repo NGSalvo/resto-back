@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { createDish } from '../../services/DishServices/createDish';
+import { createDish } from '../../services';
 
 export const postDish = async (req: Request, res: Response) => {
   try {

@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { toggleOrder } from '../../services/OrderServices/toggleOrder';
+import { toggleOrder } from '../../services';
 
 export const toggleOrderById = async (req: Request, res: Response) => {
   const { id } = req.params;

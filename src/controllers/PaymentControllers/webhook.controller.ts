@@ -2,13 +2,14 @@ import { Response, Request } from 'express';
 
 import { STATES } from '../../models';
 
-import { updateOrder } from '../../services/OrderServices/updateOrder';
+import { updateOrder } from '../../services/OrderServices/updateOrder.service';
 
-import { findPayment } from '../../services/PaymentServices/findPayment';
-import { cancelPayment } from '../../services/PaymentServices/cancelPayment';
-import { MailSenderApproved } from '../../services/MailerServices/mailSenderApproved';
-import { MailSenderCancelled } from '../../services/MailerServices/mailSenderCancelled';
-import { getOrderById } from '../../services/OrderServices/getOrderById';
+import { getOrderById } from '../../services/OrderServices/getOrderById.service';
+import { findPayment, cancelPayment } from '../../services/PaymentServices';
+import {
+  MailSenderApproved,
+  MailSenderCancelled,
+} from '../../services/MailerServices';
 
 export const recieveWebhook = async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -47,7 +48,7 @@ export const recieveWebhook = async (req: Request, res: Response) => {
         return res.status(204).send('El pedido fue eliminado');
       } else {
         const datos = await cancelPayment(Number(payment['data.id']));
-        
+
         await updateOrder(id, {
           active: false,
           state: STATES.CANCELLED,
