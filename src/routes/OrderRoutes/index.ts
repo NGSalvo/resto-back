@@ -9,6 +9,7 @@ import { getOrder } from '../../controllers/OrderControllers/getAllOrder';
 import { getOrderId } from '../../controllers/OrderControllers/getOrderById';
 import { updateOrders } from '../../controllers/OrderControllers/updateOrder';
 import { toggleOrderById } from '../../controllers/OrderControllers/toggleOrder';
+import { getFilteredOrders } from '../../controllers/OrderControllers/getFilterOrder';
 // import { decodeToken } from '../../middlewares/firebase.middleware';
 // import { requireAdmin } from '../../middlewares/permissions/adminPermission.middelware';
 // import { requireEmployee } from '../../middlewares/permissions/employeePermission.middelware';
@@ -22,7 +23,12 @@ router.post(
   // schemaValidation(createOrderSchema),
   postOrder,
 );
-
+router.get(
+  '/order/filter',
+  // decodeToken,
+  // requireEmployee,
+  getFilteredOrders,
+);
 router.get(
   '/order',
   //  decodeToken,
