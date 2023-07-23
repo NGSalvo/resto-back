@@ -1,6 +1,5 @@
 import { Response, Request } from 'express';
-
-import { getAllDish } from '../../services/DishServices/getAllDish';
+import { getAllDish } from '../../services';
 
 export const getDish = async (_req: Request, res: Response) => {
   try {

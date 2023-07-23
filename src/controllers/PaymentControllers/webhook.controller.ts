@@ -2,13 +2,14 @@ import { Response, Request } from 'express';
 
 import { STATES } from '../../models';
 
-import { updateOrder } from '../../services/OrderServices/updateOrder';
-
-import { findPayment } from '../../services/PaymentServices/findPayment';
-import { cancelPayment } from '../../services/PaymentServices/cancelPayment';
-import { MailSenderApproved } from '../../services/MailerServices/mailSenderApproved';
-import { MailSenderCancelled } from '../../services/MailerServices/mailSenderCancelled';
-import { getOrderById } from '../../services/OrderServices/getOrderById';
+import {
+  MailSenderApproved,
+  MailSenderCancelled,
+  cancelPayment,
+  findPayment,
+  getOrderById,
+  updateOrder,
+} from '../../services';
 
 export const recieveWebhook = async (req: Request, res: Response) => {
   const { id } = req.params;

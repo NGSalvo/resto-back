@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { updateDish } from '../../services/DishServices/updateDish';
+import { updateDish } from '../../services';
 
 export const updateDishById = async (req: Request, res: Response) => {
   const { id } = req.params;

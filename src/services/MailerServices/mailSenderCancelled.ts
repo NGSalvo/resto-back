@@ -1,5 +1,5 @@
-import { transporter } from '../../config/mailer';
-import { getOrderById } from '../OrderServices/getOrderById';
+import { transporter } from '../../config';
+import { getOrderById } from '../OrderServices';
 
 export async function MailSenderCancelled(orderId: string, payerEmail: string) {
   const order = await getOrderById(orderId);

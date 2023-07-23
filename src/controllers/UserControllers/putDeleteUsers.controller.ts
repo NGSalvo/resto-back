@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { softDeleteUser } from '../../services/UsersServices/deleteUsers';
+import { softDeleteUser } from '../../services';
 
 export const softDeleteUserById = async (req: Request, res: Response) => {
   const { id } = req.params;

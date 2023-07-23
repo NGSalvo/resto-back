@@ -1,20 +1,18 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import { router as DishRouter } from './routes/DishRoutes/index';
-import { router as UserRouter } from './routes/UsersRoutes/index';
-import { router as OrderRouter } from './routes/OrderRoutes/index';
-import { router as PaymentRouter } from './routes/PaymentRoutes/index';
+import { routes } from './routes';
+
 export const app = express();
 
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(DishRouter);
-app.use(UserRouter);
-app.use(OrderRouter);
-app.use(PaymentRouter);
+
+// add routes
+routes(app);
+
 //EJEMPLO DE POSTEO A LA BASE DE DATOS
 
 // TODO: refactor de rutas para que solo hay una sentencia que cargue todas las rutas
