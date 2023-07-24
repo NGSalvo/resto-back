@@ -6,6 +6,7 @@ export async function getAllDish(): Promise<DocumentType<Dish>[]> {
     const dish = await DishModel.find().exec();
     return dish;
   } catch (error) {
+    console.error(error);
     return [];
   }
 }

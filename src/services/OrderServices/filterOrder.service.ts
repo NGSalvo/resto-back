@@ -16,8 +16,8 @@ export async function getOrdersByStatusAndDate(
 
     return orders;
   } catch (error) {
-    console.error('Error al obtener las órdenes:', error);
-    throw error;
+    console.error(error);
+    throw new Error('Error al obtener las órdenes de la base de datos');
   }
 }
 export { STATES };

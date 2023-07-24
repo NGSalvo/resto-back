@@ -8,7 +8,7 @@ export const updateUserById = async (req: Request, res: Response) => {
     const userById = await getUserById(id);
     res.send(userById);
   } catch (error) {
-    console.log(error);
-    res.send(error);
+    console.error(error);
+    res.json({ message: 'Error al actualizar el usuario' });
   }
 };

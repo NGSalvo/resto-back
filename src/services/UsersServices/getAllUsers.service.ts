@@ -18,7 +18,7 @@ export async function getAllUsers() {
     const users = usersCollection.docs.map(doc => doc.data());
     return users;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return [];
   }
 }

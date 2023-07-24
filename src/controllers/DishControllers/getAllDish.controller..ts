@@ -6,6 +6,7 @@ export const getDish = async (_req: Request, res: Response) => {
     const dish = await getAllDish();
     res.send(dish);
   } catch (error) {
-    res.send(error);
+    console.error(error);
+    res.json({ message: 'Error al obtener los platillos' });
   }
 };

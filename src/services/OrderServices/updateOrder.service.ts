@@ -9,6 +9,7 @@ export async function updateOrder(
 
     return updateOrder;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }

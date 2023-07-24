@@ -8,9 +8,10 @@ export const softDeleteUserById = async (req: Request, res: Response) => {
     if (userModified !== null) {
       res.send(userModified);
     } else {
-      res.status(404).send('Usuario no encontrado');
+      res.status(404).json({ message: 'No se encontró el usuario' });
     }
   } catch (error) {
-    res.status(500).send('Error al intentar deshabilitar el usuario');
+    console.error(error);
+    res.json({ message: 'Error al eliminar el usuario' });
   }
 };

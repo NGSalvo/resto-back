@@ -9,7 +9,7 @@ export async function getAllOrder(): Promise<DocumentType<Order>[]> {
     });
     return orders;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return [];
   }
 }

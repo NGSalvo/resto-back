@@ -8,6 +8,7 @@ export async function toggleOrder(id: string): Promise<string | null> {
       return `Orden deshabilitada: ${foundOrder.id}`;
     return `Se habilitó la orden: ${foundOrder?.id}`;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }
