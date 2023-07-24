@@ -6,9 +6,7 @@ export async function getOrdersByStatusAndDate(
   endDate: Date,
 ): Promise<Order[]> {
   try {
-    let orders;
-
-    orders = await OrderModel.find({
+    const orders = await OrderModel.find({
       state: status,
       createdAt: {
         $gte: startDate,

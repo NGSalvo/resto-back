@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import {
-  getOrdersByStatusAndDate,
-  STATES,
-} from '../../services/OrderServices/filterOrder';
+
+import { STATES } from '../../models';
+import { getOrdersByStatusAndDate } from '../../services';
 
 function isValidStatus(status: string): status is STATES {
   return Object.values(STATES).includes(status as STATES);
@@ -13,7 +12,7 @@ export async function getFilteredOrders(req: Request, res: Response) {
     const { status, startDate, endDate } = req.query;
 
     if (!status || typeof status !== 'string' || !isValidStatus(status)) {
-      return res.status(400).send({ message: 'Estado no válido' });
+      return res.status(400).json({ message: 'Estado no válido' });
     }
 
     if (
@@ -22,7 +21,7 @@ export async function getFilteredOrders(req: Request, res: Response) {
       typeof startDate !== 'string' ||
       typeof endDate !== 'string'
     ) {
-      return res.status(400).send({ message: 'Fechas no válidas' });
+      return res.status(400).json({ message: 'Fechas no válidas' });
     }
 
     const statusUpperCase = status.toUpperCase() as keyof typeof STATES;
@@ -39,6 +38,6 @@ export async function getFilteredOrders(req: Request, res: Response) {
     return res.status(200).send(orders);
   } catch (error) {
     console.error('Error al obtener las órdenes:', error);
-    return res.status(500).send({ message: 'Error interno del servidor' });
+    return res.status(500).json({ message: 'Error interno del servidor' });
   }
 }

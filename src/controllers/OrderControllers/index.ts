@@ -1,4 +1,5 @@
 export * from './getAllOrder.controller';
+export * from './getFilterOrder.controller';
 export * from './getOrderById.controller';
 export * from './postOrder.controller';
 export * from './toggleOrder.controller';

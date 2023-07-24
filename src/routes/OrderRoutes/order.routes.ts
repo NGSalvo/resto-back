@@ -10,6 +10,7 @@ import {
   getOrderId,
   updateOrders,
   toggleOrderById,
+  getFilteredOrders,
 } from '../../controllers';
 import {
   // decodeToken,
@@ -17,7 +18,6 @@ import {
   // requireEmployee,
   schemaValidation,
 } from '../../middlewares';
-import { getFilteredOrders } from '../../controllers/OrderControllers/getFilterOrder';
 
 export const orderRouter = Router();
 
