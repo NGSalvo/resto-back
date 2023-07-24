@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
 import { getAllUsers } from '../../services';
 
-export const getUsers = async (req: Request, res: Response) => {
+export const getUsers = async (_req: Request, res: Response) => {
   try {
     const allUsers = await getAllUsers();
     res.send(allUsers);
