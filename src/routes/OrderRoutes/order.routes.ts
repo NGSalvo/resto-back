@@ -17,6 +17,7 @@ import {
   // requireEmployee,
   schemaValidation,
 } from '../../middlewares';
+import { getFilteredOrders } from '../../controllers/OrderControllers/getFilterOrder';
 
 export const orderRouter = Router();
 
@@ -53,4 +54,10 @@ orderRouter.put(
   // requireAdmin,
   schemaValidation(updateOrderSchema),
   toggleOrderById,
+);
+orderRouter.get(
+  '/order/filter',
+  // decodeToken,
+  // requireEmployee,
+  getFilteredOrders,
 );
