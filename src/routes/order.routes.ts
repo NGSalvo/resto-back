@@ -3,7 +3,7 @@ import { Router } from 'express';
 import {
   // createOrderSchema,
   updateOrderSchema,
-} from '../../schemas';
+} from '../schemas';
 import {
   postOrder,
   getOrder,
@@ -11,13 +11,13 @@ import {
   updateOrders,
   toggleOrderById,
   getFilteredOrders,
-} from '../../controllers';
+} from '../controllers';
 import {
   // decodeToken,
   // requireAdmin,
   // requireEmployee,
   schemaValidation,
-} from '../../middlewares';
+} from '../middlewares';
 
 export const orderRouter = Router();
 

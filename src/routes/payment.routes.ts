@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createMPOrder, recieveWebhook } from '../../controllers';
+import { createMPOrder, recieveWebhook } from '../controllers';
 
 export const paymentRouter = Router();
 

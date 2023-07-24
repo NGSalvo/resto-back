@@ -1,7 +1,7 @@
-import { dishRouter } from './DishRoutes/dish.routes';
-import { orderRouter } from './OrderRoutes/order.routes';
-import { paymentRouter } from './PaymentRoutes/payment.routes';
-import { userRouter } from './UsersRoutes/user.routes';
+import { dishRouter } from './dish.routes';
+import { orderRouter } from './order.routes';
+import { paymentRouter } from './payment.routes';
+import { userRouter } from './user.routes';
 
 export const routes = (app: any) => {
   app.use('/dish', dishRouter);

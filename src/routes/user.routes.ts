@@ -1,7 +1,7 @@
 import { Router } from 'express';
 export const userRouter = Router();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { createUserSchema, updateUserSchema } from '../../schemas';
+import { createUserSchema, updateUserSchema } from '../schemas';
 
 import {
   postUser,
@@ -10,8 +10,8 @@ import {
   getUserId,
   updateUserById,
   softDeleteUserById,
-} from '../../controllers';
-import { decodeToken, requireAdmin, schemaValidation } from '../../middlewares';
+} from '../controllers';
+import { decodeToken, requireAdmin, schemaValidation } from '../middlewares';
 
 userRouter.post(
   '/',
