@@ -8,6 +8,6 @@ export const updateDishById = async (req: Request, res: Response) => {
     res.send(dish);
   } catch (error) {
     console.error(error);
-    res.json({ message: 'Error al intentar actualizar el platillo' });
+    res.json({ message: 'Error al actualizar el platillo' });
   }
 };

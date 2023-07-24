@@ -7,6 +7,6 @@ export const postOrder = async (req: Request, res: Response) => {
     res.send(order);
   } catch (error) {
     console.error(error);
-    res.send(error);
+    res.json({ message: 'Error al crear la orden' });
   }
 };

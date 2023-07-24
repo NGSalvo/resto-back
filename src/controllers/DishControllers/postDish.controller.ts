@@ -7,6 +7,6 @@ export const postDish = async (req: Request, res: Response) => {
     res.send(dish);
   } catch (error) {
     console.error(error);
-    res.json({ message: 'Error al intentar crear un platillo' });
+    res.json({ message: 'Error al crear un platillo' });
   }
 };

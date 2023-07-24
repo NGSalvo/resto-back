@@ -7,7 +7,7 @@ export const getOrderId = async (req: Request, res: Response) => {
     const order = await getOrderById(id);
     res.send(order);
   } catch (error) {
-    console.log(error);
-    res.send(`No existe orden con ID: ${id}`);
+    console.error(error);
+    res.json({ message: 'Error al obtener la orden' });
   }
 };

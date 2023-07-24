@@ -14,6 +14,6 @@ export const getDishID = async (req: Request, res: Response) => {
     res.send(dish);
   } catch (error) {
     console.error(error);
-    res.json({ message: 'Erorr al intentar obtener un platillo' });
+    res.json({ message: 'Erorr al obtener un platillo' });
   }
 };
