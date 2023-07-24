@@ -14,6 +14,6 @@ export const getUserId = async (req: Request, res: Response) => {
     res.send(userById);
   } catch (error) {
     console.error(error);
-    res.status(500).send({ message: 'Error al obtener el usuario' });
+    res.status(500).json({ message: 'Error al obtener el usuario' });
   }
 };
