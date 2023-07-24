@@ -26,7 +26,7 @@ export async function getUserById(id: string) {
       return null; // No se encontró un usuario con el ID proporcionado
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 }

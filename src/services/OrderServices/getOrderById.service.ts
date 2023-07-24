@@ -8,7 +8,7 @@ export async function getOrderById(id: string): Promise<Order | null> {
     });
     return order;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 }

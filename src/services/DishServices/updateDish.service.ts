@@ -6,6 +6,7 @@ export async function updateDish(id: string, dish: Dish): Promise<Dish | null> {
     const updatedDish = DishModel.findById(id);
     return updatedDish;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }
