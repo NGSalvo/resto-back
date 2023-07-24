@@ -8,7 +8,7 @@ export const getUserId = async (req: Request, res: Response) => {
     const userById = await getUserById(id);
     res.send(userById);
   } catch (error) {
-    console.log(error);
-    res.status(404).send({ error: 'Usuario no encontrado' });
+    console.error(error);
+    res.status(500).send({ message: 'Error al obtener el usuario' });
   }
 };
