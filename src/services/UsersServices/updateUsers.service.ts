@@ -30,7 +30,7 @@ export async function updateUser(
 
     return updatedUser;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 }

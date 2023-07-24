@@ -6,7 +6,7 @@ export async function createOrder(orderData: Order) {
     await newOrder.save();
     return newOrder;
   } catch (error) {
-    console.log(error);
-    throw new Error('Error al crear la orden');
+    console.error(error);
+    throw new Error('Error al crear la orden en la base de datos');
   }
 }

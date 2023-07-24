@@ -6,6 +6,7 @@ export async function createDish(dish: Dish) {
     await newDish.save();
     return dish;
   } catch (error) {
+    console.error(error);
     return new Error(`Error creando el platillo en la base de datos`);
   }
 }

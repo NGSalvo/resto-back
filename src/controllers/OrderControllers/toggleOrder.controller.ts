@@ -7,6 +7,7 @@ export const toggleOrderById = async (req: Request, res: Response) => {
     const order = await toggleOrder(id);
     res.send(order);
   } catch (error) {
-    res.send(error);
+    console.error(error);
+    res.json({ message: 'Error al actualizar el estado de la orden' });
   }
 };

@@ -7,7 +7,7 @@ export const updateOrders = async (req: Request, res: Response) => {
     const order = await updateOrder(id, req.body);
     res.send(order);
   } catch (error) {
-    res.send(error);
-    console.log(error);
+    console.error(error);
+    res.json({ message: 'Error al actualizar la orden' });
   }
 };

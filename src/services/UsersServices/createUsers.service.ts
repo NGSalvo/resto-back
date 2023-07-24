@@ -21,6 +21,8 @@ export async function createUser(req: Request, res: Response) {
     return res.status(201).send({ id: userId, ...req.body }); // Devuelve la respuesta con el ID del usuario creado
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ error: 'Error al crear el usuario' });
+    return res
+      .status(500)
+      .json({ message: 'Error al crear el usuario en la base de datos' });
   }
 }

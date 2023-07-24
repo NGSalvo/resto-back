@@ -9,10 +9,11 @@ export const getDishID = async (req: Request, res: Response) => {
     if (dish === null) {
       return res
         .status(404)
-        .send(`No se encontro un platillo con este Id: ${id}`);
+        .json({ message: `No se encontró un platillo con el ID: ${id}` });
     }
     res.send(dish);
   } catch (error) {
-    res.send(error);
+    console.error(error);
+    res.json({ message: 'Erorr al obtener un platillo' });
   }
 };

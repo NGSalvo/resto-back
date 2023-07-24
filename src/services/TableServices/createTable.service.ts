@@ -6,7 +6,7 @@ export async function createTable(tableData: Table) {
     await newTable.save();
     return newTable;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new Error('Error al crear las mesas');
   }
 }

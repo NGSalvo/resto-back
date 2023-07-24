@@ -7,6 +7,7 @@ export const toggleDishById = async (req: Request, res: Response) => {
     const dish = await toggleDish(id);
     res.send(dish);
   } catch (error) {
-    res.send(error);
+    console.error(error);
+    res.json({ mesage: 'Error al actualizar el estado del platillo' });
   }
 };

@@ -50,7 +50,7 @@ export async function softDeleteUser(id: string): Promise<string | null> {
 
     return null;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 }

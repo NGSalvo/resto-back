@@ -9,6 +9,7 @@ export async function toggleDish(id: string): Promise<string | null> {
 
     return `Se habilito el platillo: ${foundDish?.title}`;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }
