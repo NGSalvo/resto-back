@@ -1,6 +1,6 @@
 import { prop, getModelForClass } from '@typegoose/typegoose';
 
-class Table {
+export class Table {
   @prop({ required: true, type: Number })
   quantity: number;
 }
