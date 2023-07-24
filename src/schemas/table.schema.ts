@@ -15,3 +15,6 @@ export const updateTableSchema = z.object({
       .nonnegative('No puede haber un numero negativo de mesas'),
   }),
 });
+
+export type CreateTable = z.infer<typeof createTableSchema>['body'];
+export type UpdateTable = z.infer<typeof updateTableSchema>['body'];
