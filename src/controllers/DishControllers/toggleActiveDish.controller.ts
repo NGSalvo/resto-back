@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { toggleDish } from '../../services/DishServices/toggleDish';
+import { toggleDish } from '../../services';
 
 export const toggleDishById = async (req: Request, res: Response) => {
   const { id } = req.params;

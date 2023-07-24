@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { getUserRole } from '../../services/UsersServices/getUserRole';
+import { getUserRole } from '../../services';
 
 export const getRole = async (req: Request, res: Response) => {
   const { email } = req.user;

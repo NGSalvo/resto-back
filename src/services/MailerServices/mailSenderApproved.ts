@@ -1,4 +1,4 @@
-import { transporter } from '../../config/mailer';
+import { transporter } from '../../config';
 
 export async function MailSenderApproved(_orderId: string, payerEmail: string) {
   await transporter.sendMail({

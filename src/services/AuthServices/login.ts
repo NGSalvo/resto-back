@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import admin from '../../config/firebase-config';
-import { getUserById } from '../UsersServices/getUsersById';
+import { getUserById } from '../UsersServices';
 
 export const login = async (req: Request, res: Response) => {
   const { accessToken, id } = req.body;

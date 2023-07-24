@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { updateOrder } from '../../services/OrderServices/updateOrder';
+import { updateOrder } from '../../services';
 
 export const updateOrders = async (req: Request, res: Response) => {
   const { id } = req.params;
