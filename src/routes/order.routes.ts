@@ -13,9 +13,9 @@ import {
   getFilteredOrders,
 } from '../controllers';
 import {
-  decodeToken,
+  // decodeToken,
   // requireAdmin,
-  requireEmployee,
+  // requireEmployee,
   schemaValidation,
 } from '../middlewares';
 
@@ -29,7 +29,12 @@ orderRouter.post(
   postOrder,
 );
 
-orderRouter.get('/', decodeToken, requireEmployee, getOrder);
+orderRouter.get(
+  '/',
+  //  decodeToken,
+  //  requireEmployee,
+  getOrder,
+);
 orderRouter.get(
   '/:id',
   // decodeToken,
