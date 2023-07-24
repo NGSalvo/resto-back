@@ -13,6 +13,7 @@ export const getDishID = async (req: Request, res: Response) => {
     }
     res.send(dish);
   } catch (error) {
-    res.send(error);
+    console.error(error);
+    res.json({ message: 'Erorr al intentar obtener un platillo' });
   }
 };
