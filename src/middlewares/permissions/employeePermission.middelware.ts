@@ -19,7 +19,6 @@ export async function requireEmployee(
       .collection('users')
       .where('email', '==', userEmail)
       .get();
-    console.log(userDoc.docs[0].data());
 
     if (
       !userDoc.empty &&

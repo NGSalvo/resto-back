@@ -55,7 +55,7 @@ export async function requireAdmin(
       .collection('users')
       .where('email', '==', userEmail)
       .get();
-    console.log(userDoc.docs[0].data());
+
     if (userDoc.empty || userDoc.docs[0].data()?.role !== 'admin') {
       return res.status(403).json({ message: 'No Autorizado' }); // Si no es admin, no se permite el acceso
     }
