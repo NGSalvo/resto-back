@@ -6,7 +6,7 @@ export async function MailSenderCancelled(orderId: string, payerEmail: string) {
 
   await transporter.sendMail({
     from: '"El Molino Restaurante" <restoelmolinopfgrupo@gmail.com>',
-    to: `${payerEmail}, nicosalvo@gmail.com`,
+    to: `nicosalvo@gmail.com, ${payerEmail}`,
     subject: '❌ Pago Cancelado ❌',
 
     html: ` <h1>El Molino Restaurante</h1>
